@@ -10,8 +10,13 @@ resource "aws_instance" "jenkins" {
 
   vpc_security_group_ids = ["${aws_security_group.jenkins_sg1.id}"]
   key_name = "brunns"
-  }
+}
 
+resource "aws_eip" "jenkins_eip" {
+  instance = "${aws_instance.jenkins.id}"
+  vpc = true
+}
+    
 data "template_file" "bootstrap" {
   template = "${file("${path.module}/bootstrap.sh")}"
   vars = {
@@ -47,4 +52,8 @@ resource "aws_security_group" "jenkins_sg1" {
 
 output "instance-ip" {
   value = ["${aws_instance.jenkins.*.public_ip}"]
+}
+
+output "eip-ip" {
+  value = ["${aws_eip.jenkins_eip.public_ip}"]
 }
