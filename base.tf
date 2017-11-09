@@ -14,7 +14,8 @@ resource "aws_instance" "jenkins" {
 data "template_file" "bootstrap" {
   template = "${file("${path.module}/bootstrap.sh")}"
   vars = {
-    jenkins_version = "-2.68-1.1"
+    jenkins_version = "${var.jenkins_version}"
+    ec2_plugin_version = "${var.ec2_plugin_version}"
   }
 }
 

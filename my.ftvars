@@ -1,0 +1,2 @@
+jenkins_version = "-2.68-1.1"
+ec2_plugin_version = "1.37"

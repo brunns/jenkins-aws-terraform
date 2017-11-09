@@ -11,3 +11,6 @@ variable "ami" {
     # us-east-1 = "ami-6057e21a" # Amazon Linux
   }
 }
+
+variable "jenkins_version" {}
+variable "ec2_plugin_version" {}
