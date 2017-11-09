@@ -9,5 +9,6 @@ Simplest possible Jenkins on AWS using Terraform.
 
     ssh -t centos@$instance_ip 'less +F /var/log/cloud-init-output.log' # See what's going on
     ssh -t centos@$instance_ip 'curl 0.0.0.0:8080' # Is Jenkins running?
+    curl $instance_ip:8080 Can the world see Jenkins?
 
     terraform destroy -var-file my.ftvars
